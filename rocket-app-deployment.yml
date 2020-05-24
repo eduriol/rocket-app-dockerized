@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-app-deployment
+  labels:
+    app: rocket-app
+    type: back-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: back-end
+  template:
+    metadata:
+      name: rocket-app-pod
+      labels:
+        app: rocket-app
+        type: back-end
+    spec:
+      containers:
+      - name: rockety
+        image: eduardoriol/my-rocket-app:latest
